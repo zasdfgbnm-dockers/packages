@@ -73,7 +73,6 @@ depends=(
 	grub
 	grub-btrfs
 	refind-efi
-	memtest86+
 	fkill
 	mkinitcpio-docker-hooks
 	intel-ucode
