@@ -22,7 +22,7 @@ sudo pacman -Sy
 def yaourt_package(pkgname):
     print(f"==> Building {pkgname}")
     with yaourt_guard():
-        yaourt -S --noconfirm @(pkgname)
+        yaourt -G @(pkgname)
     ls -lah
     cd @(pkgname)
     makepkg -s --noconfirm
