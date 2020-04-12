@@ -3,12 +3,27 @@ pkgver=1
 pkgrel=1
 arch=(any)
 depends=(
+	zasdfgbnmsystem-desktop-small
+
 	# system
+	exfat-utils
+	ntfs-3g
 	partitionmanager
 	gparted
 	hyper
 	alacritty
-	kde-applications-meta
+	system-config-printer
+
+	# nvidia
+	nvidia-container-toolkit
+	nvidia
+	nvidia-utils
+	nvidia-settings
+
+	# web & network
+	chromium
+	firefox
+	lastpass
 
 	# office
 	lyx
@@ -21,6 +36,11 @@ depends=(
 	kbibtex
 	slack-desktop
 
+	#desktop
+	plasma-wayland-session
+	plasma-nm
+	kde-applications-meta
+
 	# Games & entertainments
 	vlc
 	youtube-dl
@@ -28,9 +48,38 @@ depends=(
 	mencoder
 
 	# development
+	visual-studio-code-bin
+	meld
 	sqlitebrowser
 	opencv
 	magma
 	cuda
 	cudnn
+
+	# artwork
+	archlinux-wallpaper
+	archlinux-artwork
+
+	# fonts
+	wqy-bitmapfont
+	wqy-microhei
+	wqy-zenhei
+	ttf-arphic-ukai
+	ttf-arphic-uming
+	adobe-source-han-sans-cn-fonts
+
+	# i18n
+	fcitx5-chinese-addons-git
+	fcitx5-git
+	fcitx5-gtk-git
+	fcitx5-qt4-git
+	fcitx5-qt5-git
+	kcm-fcitx5-git
+
+	# virtualization
+	virtualbox
+	virtualbox-guest-utils
+	virtualbox-guest-iso
+	virtualbox-host-modules-arch
+	virtualbox-ext-vnc
 )
