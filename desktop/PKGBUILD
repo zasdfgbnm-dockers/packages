@@ -20,7 +20,6 @@ depends=(
 	pdfarranger
 	kbibtex
 	slack-desktop
-	pdftk-bin
 
 	# Games & entertainments
 	vlc
