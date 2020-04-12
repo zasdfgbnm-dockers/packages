@@ -1,6 +1,11 @@
 #!/usr/bin/xonsh
 import contextlib
 
+WORKSPACE = $PWD
+DIR = $(mktemp -d).strip()
+installed = set()
+sudo pacman -Sy
+
 
 @contextlib.contextmanager
 def yaourt_guard():
@@ -11,30 +16,56 @@ def yaourt_guard():
     $ARGS = save
 
 
-WORKSPACE=$PWD
-DIR=$(mktemp -d)
+@contextlib.contextmanager
+def enter_once(directory):
+    """yaourt uses $ARGS, we must delete it temporarily to avoid collision"""
+    save = $PWD
+    cd @(directory)
+    yield
+    cd @(save)
+    rm -rf @(directory)
 
-print(f"==> Generating packages at {DIR}")
-cd @(DIR.strip())
 
-sudo pacman -Sy
+def list_packages():
+    l = $(ls *.pkg.*).strip().split()
+    result = set()
+    for p in l:
+        i = len(p)
+        for _ in range(3):
+            i -= 1
+            while p[i] != '-':
+                i -= 1
+        result.add(p[:i])
+    return result
 
-def yaourt_package(pkgname):
+
+def yaourt_package(pkgname, stack):
     print(f"==> Building {pkgname}")
     with yaourt_guard():
         yaourt -G @(pkgname)
-    cd @(pkgname)
-    makepkg -s --noconfirm
-    cp @(pkgname)*.pkg.* ..
-    cd ..
-    rm -rf @(pkgname)
 
-def yaourt_deps(filename):
+    with enter_once(pkgname):
+        yaourt_deps('PKGBUILD', stack)
+        if pkgname in installed:
+            return
+        makepkg -s --noconfirm
+        sudo pacman -U --noconfirm *.pkg.*
+        cp *.pkg.* @(DIR)
+        for p in list_packages():
+            installed.add(p)
+
+
+def yaourt_deps(filename, stack):
     deps=$(makepkg -p @(filename) --printsrcinfo | grep -oP '(?<=depends = ).*')
     for d in deps.strip().split():
-        if $(pacman -Ss @(f"^{d}$")).strip() == "":
+        blacklist = ['>=', '>', '<=', '<', '==']
+        for b in blacklist:
+            if b in d:
+                d = d.split(b)[0]
+        if $(pacman -Ss @(f"^{d}$")).strip() == "" and d not in installed and d not in stack:
             print(f"==> Recursively building {d}")
-            yaourt_package(d)
+            stack.add(d)
+            yaourt_package(d, stack)
 
 
 def make_package(filename):
@@ -42,22 +73,27 @@ def make_package(filename):
     cp @(f"{WORKSPACE}/{filename}") @(filename)
     makepkg -d -p @(filename)
     rm -rf pkg src
-    yaourt_deps(filename)
+    yaourt_deps(filename, set())
     rm @(filename)
 
-print("==> Start making packages")
-make_package("basic")
-make_package("desktop-small")
 
-ls -lah
+def upload():
+    git init
+    git remote add origin git@github.com:zasdfgbnm-dockers/packages.git
+    git checkout --orphan gh-pages
+    git add .
+    git status
+    git commit -m "update"
+    git push --force -u origin gh-pages
 
-repo-add zasdfgbnmsystem.db.tar.gz *.pkg.*
-tree -H '.' -L 1 --noreport --charset utf-8 > index.html
 
-# git init
-# git remote add origin git@github.com:zasdfgbnm-dockers/packages.git
-# git checkout --orphan gh-pages
-# git add .
-# git status
-# git commit -m "update"
-# git push --force -u origin gh-pages
+with enter_once(DIR):
+    print(f"==> Generating packages at {DIR}")
+
+    make_package("basic")
+    make_package("desktop-small")
+
+    repo-add zasdfgbnmsystem.db.tar.gz *.pkg.*
+    tree -H '.' -L 1 --noreport --charset utf-8 > index.html
+
+    ls -lah
