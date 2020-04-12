@@ -9,3 +9,6 @@ ssh-keyscan -t rsa github.com >> /home/user/.ssh/known_hosts
 
 git config --global user.email "zasdfgbnm-bot@example.com"
 git config --global user.name "zasdfgbnm-bot"
+
+sudo mkdir tmp
+sudo chown user:user tmp
