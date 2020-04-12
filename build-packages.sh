@@ -11,7 +11,7 @@ sudo pacman -Sy
 yaourt_package() {
     yaourt -G $1
     cd $1
-    makepkg
+    makepkg -s --noconfirm
     cp $1*.pkg.* ..
     cd ..
     rm -rf $1
