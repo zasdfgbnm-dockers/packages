@@ -60,13 +60,12 @@ depends=(
 )
 
 source=(qemu.conf sddm.conf
-		https://raw.githubusercontent.com/coraxx/netdata_nv_plugin/master/python_modules/pynvml.py
-		https://raw.githubusercontent.com/coraxx/netdata_nv_plugin/master/nv.chart.py
-		https://raw.githubusercontent.com/coraxx/netdata_nv_plugin/master/nv.conf
-		)
+        https://raw.githubusercontent.com/coraxx/netdata_nv_plugin/master/python_modules/pynvml.py
+        https://raw.githubusercontent.com/coraxx/netdata_nv_plugin/master/nv.chart.py
+        https://raw.githubusercontent.com/coraxx/netdata_nv_plugin/master/nv.conf)
 md5sums=('429cd7c0aba6bb70271f3dbc0a669096'
          '9289c4c01a79ef35612d9c3257b35701'
-		 SKIP SKIP SKIP)
+         SKIP SKIP SKIP)
 
 package() {
 	cd ${pkgdir}
