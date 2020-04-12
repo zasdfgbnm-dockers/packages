@@ -23,7 +23,6 @@ def yaourt_package(pkgname):
     print(f"==> Building {pkgname}")
     with yaourt_guard():
         yaourt -G @(pkgname)
-    ls -lah
     cd @(pkgname)
     makepkg -s --noconfirm
     cp @(pkgname)*.pkg.* ..
