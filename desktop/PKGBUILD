@@ -27,7 +27,6 @@ depends=(
 
 	# office
 	lyx
-	texlive-most
 	texlive-langchinese
 	gimp
 	simplescreenrecorder
