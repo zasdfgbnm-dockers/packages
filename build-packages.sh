@@ -25,6 +25,8 @@ make_package basic
 yaourt_package mkinitcpio-docker-hooks
 yaourt_package fkill
 
+ls -lah
+
 repo-add zasdfgbnmsystem.db.tar.gz *.pkg.*
 tree -H '.' -L 1 --noreport --charset utf-8 > index.html
 
