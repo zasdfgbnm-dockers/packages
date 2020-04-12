@@ -26,6 +26,7 @@ yaourt_package mkinitcpio-docker-hooks
 yaourt_package fkill
 
 repo-add zasdfgbnmsystem.db.tar.gz *.pkg.*
+tree -H '.' -L 1 --noreport --charset utf-8 > index.html
 
 git init
 git remote add origin git@github.com:zasdfgbnm-dockers/packages.git

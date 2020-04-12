@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-sudo pacman -S --noconfirm git base-devel openssh
+sudo pacman -S --noconfirm git base-devel openssh tree
 
 sudo cp -r .ssh /home/user/.ssh
 sudo chown user:user -R /home/user/.ssh
