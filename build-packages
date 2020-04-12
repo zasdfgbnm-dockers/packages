@@ -94,6 +94,7 @@ with enter_once(DIR):
 
     make_package("basic")
     make_package("desktop-small")
+    make_package("desktop")
 
     repo-add zasdfgbnmsystem.db.tar.gz *.pkg.*
     tree -H '.' -L 1 --noreport --charset utf-8 > index.html
