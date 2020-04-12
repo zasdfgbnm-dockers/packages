@@ -18,7 +18,9 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         echo ${{secrets.zasdfgbnm_bot_private_key}} | base64 -d > ~/.ssh/id_rsa
-        chmod 0600 ~/.ssh/id_rsa
         echo ${{secrets.zasdfgbnm_bot_public_key}} > ~/.ssh/id_rsa.pub
+        ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+        git config --global user.email "zasdfgbnm-bot@example.com"
+        git config --global user.name "zasdfgbnm-bot"
     - name: build
       run: docker run zasdfgbnm/archlinux-yaourt -v $HOME:/home/user -v $PWD:/workspace /workspace/build-packages.sh
