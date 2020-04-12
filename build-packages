@@ -21,6 +21,7 @@ def yaourt_guard():
 def enter_once(directory):
     """yaourt uses $ARGS, we must delete it temporarily to avoid collision"""
     save = $PWD
+    mkdir -p @(directory)
     cd @(directory)
     yield
     cd @(save)
