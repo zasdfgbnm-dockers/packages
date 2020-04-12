@@ -19,7 +19,7 @@ def yaourt_guard():
 
 @contextlib.contextmanager
 def enter_once(directory):
-    """yaourt uses $ARGS, we must delete it temporarily to avoid collision"""
+    """enter a directory, when done, delete it"""
     save = $PWD
     mkdir -p @(directory)
     cd @(directory)
