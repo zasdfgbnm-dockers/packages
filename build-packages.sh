@@ -15,7 +15,7 @@ make_package() {
 yaourt_package() {
     yaourt -G $1
     cd $1
-    makepkg -s
+    makepkg -s --noconfirm
     cp $1*.pkg.* ..
     cd ..
     rm -rf $1
