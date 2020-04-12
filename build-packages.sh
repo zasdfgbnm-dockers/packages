@@ -6,11 +6,7 @@ DIR=$(mktemp -d)
 echo generating packages at $DIR
 cd $DIR
 
-make_package() {
-    cp $WORKSPACE/$1 $1
-    makepkg -d -p $1
-    rm -rf pkg src $1
-}
+sudo pacman -Sy
 
 yaourt_package() {
     yaourt -G $1
@@ -21,9 +17,22 @@ yaourt_package() {
     rm -rf $1
 }
 
+make_package() {
+    cp $WORKSPACE/$1 $1
+    makepkg -d -p $1
+    rm -rf pkg src
+
+    deps=$(makepkg -p $1 --printsrcinfo | grep -oP '(?<=depends = ).*')
+    for d in $deps; do
+        if [[ $(pacman -Ss ^$d$) == "" ]]; then
+            yaourt_package $d
+        fi
+    done
+
+    rm $1
+}
+
 make_package basic
-yaourt_package mkinitcpio-docker-hooks
-yaourt_package fkill
 
 ls -lah
 
