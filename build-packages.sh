@@ -12,7 +12,17 @@ make_package() {
     rm -rf pkg src $1
 }
 
+yaourt_package() {
+    yaourt -G $1
+    cd $1
+    makepkg
+    cp $1*.pkg.* ..
+    cd ..
+    rm -rf $1
+}
+
 make_package basic
+yaourt_package mkinitcpio-docker-hooks
 
 repo-add zasdfgbnmsystem.db.tar.gz *.pkg.*
 
