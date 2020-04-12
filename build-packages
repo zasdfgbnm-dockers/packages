@@ -34,7 +34,7 @@ def make_package(filename):
     yaourt_deps(filename)
     rm @(filename)
 
-yaourt -S --noconfirm fkill
+yaourt -G fkill
 
 print("==> Start making packages")
 # make_package("basic")
