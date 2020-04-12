@@ -1,0 +1,27 @@
+name: makepkg
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: set up environments
+      run: |
+        mkdir -p ~/.ssh
+        echo ${{secrets.zasdfgbnm_bot_public_key}} > ~/.ssh/id_rsa.pub
+        echo ${{secrets.zasdfgbnm_bot_private_key}} | base64 -d > ~/.ssh/id_rsa
+        chmod 0600 ~/.ssh/id_rsa
+        ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+        git config --global user.email "zasdfgbnm-bot@example.com"
+        git config --global user.name "zasdfgbnm-bot"
+    - name: build
+      run: docker run -v $HOME:/home/user -v $PWD:/w -w /w zasdfgbnm/archlinux-yaourt bash -c 'sudo ./install-deps.sh && ./build-packages.sh'
