@@ -76,9 +76,9 @@ depends=(
 	kcm-fcitx5-git
 
 	# virtualization
-	virtualbox
-	virtualbox-guest-utils
-	virtualbox-guest-iso
-	virtualbox-host-modules-arch
-	virtualbox-ext-vnc
+	# virtualbox
+	# virtualbox-guest-utils
+	# virtualbox-guest-iso
+	# virtualbox-host-modules-arch
+	# virtualbox-ext-vnc
 )
