@@ -34,5 +34,6 @@ git init
 git remote add origin git@github.com:zasdfgbnm-dockers/packages.git
 git checkout --orphan gh-pages
 git add .
+git status
 git commit -m "update"
 git push --force -u origin gh-pages
