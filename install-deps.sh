@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-sudo pacman -S --noconfirm git
+sudo pacman -S --noconfirm git base-devel
