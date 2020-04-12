@@ -1,8 +1,9 @@
 #!/usr/bin/xonsh
 import contextlib
+import os
 
 WORKSPACE = $PWD
-DIR = $(mktemp -d).strip()
+DIR = os.path.join(WORKSPACE, 'tmp')
 installed = set()
 sudo pacman -Sy
 
@@ -97,3 +98,5 @@ with enter_once(DIR):
     tree -H '.' -L 1 --noreport --charset utf-8 > index.html
 
     ls -lah
+
+    upload()
