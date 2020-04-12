@@ -1,9 +1,10 @@
 post_install() {
     # set up locale
     cp /opt/zasdfgbnmsystem/etc/locale.gen /etc/locale.gen
+    locale-gen
 
     # make initramfs bootable
-	sed -i 's/archlinux\/base/zasdfgbnmsystem\/basic/g' /etc/docker-btrfs.json
+    sed -i 's/archlinux\/base/zasdfgbnmsystem\/basic/g' /etc/docker-btrfs.json
     perl -i -p -e 's/(?<=^HOOKS=\()(.*)(?=\))/$1 docker-btrfs/g' /etc/mkinitcpio.conf
 
     # setting up services
