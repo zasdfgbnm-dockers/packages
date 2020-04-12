@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-sudo pacman -S git makepkg
+sudo pacman -S --noconfirm git
