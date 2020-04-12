@@ -1,0 +1,4 @@
+post_install() {
+    systemctl enable libvirtd sddm org.cups.cupsd
+    sed -i 's/basic/desktop/g' /etc/docker-btrfs.json
+}
