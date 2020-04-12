@@ -14,6 +14,8 @@ make_package() {
 
 make_package basic
 
+repo-add zasdfgbnmsystem.db.tar.gz *.pkg.*
+
 git init
 git remote add origin git@github.com:zasdfgbnm-dockers/packages.git
 git checkout --orphan gh-pages
