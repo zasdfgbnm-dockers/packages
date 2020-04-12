@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-sudo pacman -S --noconfirm git base-devel openssh tree xonsh
+sudo pacman -S --noconfirm git base-devel openssh tree python xonsh
 
 sudo cp -r .ssh /home/user/.ssh
 sudo chown user:user -R /home/user/.ssh
