@@ -24,4 +24,4 @@ jobs:
         git config --global user.email "zasdfgbnm-bot@example.com"
         git config --global user.name "zasdfgbnm-bot"
     - name: build
-      run: docker run zasdfgbnm/archlinux-yaourt
+      run: docker run zasdfgbnm/archlinux-yaourt -v $HOME/.ssh:/home/user/.ssh -v $PWD:/workspace /workspace/build-packages.sh
