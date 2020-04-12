@@ -97,3 +97,19 @@ depends=(
 	rr
 )
 
+source=(basic.conf dockersh gen_boot locale.gen)
+md5sums=('b3912821462b31bc2faa3ff2c10d796b'
+         'a090af4e94b08b3545cb35fcd3b4f395'
+         '63eea87d913d98738c3a2730e7a0319e'
+         '32a4472fe56ceb6939bc3af6fc9270eb')
+
+package() {
+	cd ${pkgdir}
+	mkdir -p "${pkgdir}/etc/sysctl.d/"
+	mkdir -p "${pkgdir}/usr/bin/"
+
+	install -m 644 "${srcdir}/basic.conf" "${pkgdir}/etc/sysctl.d/"
+	install -m 755 "${srcdir}/dockersh" "${pkgdir}/usr/bin/"
+	install -m 755 "${srcdir}/gen_boot" "${pkgdir}/usr/bin/"
+	install -m 644 "${srcdir}/locale.gen" "${pkgdir}/etc/"
+}
