@@ -3,16 +3,15 @@
 WORKSPACE=$PWD
 DIR=$(mktemp -d)
 
-print(f"generating packages at {DIR}")
+print(f"==> Generating packages at {DIR}")
 cd @(DIR.strip())
 
-# sudo pacman -Sy
+sudo pacman -Sy
 
 def yaourt_package(pkgname):
-    print(f"building {pkgname}")
-    echo @(pkgname)
-    yaourt -G @(pkgname)
-    # ls -lah
+    print(f"==> Building {pkgname}")
+    yaourt -S --noconfirm @(pkgname)
+    ls -lah
     # cd @(pkgname)
     # makepkg -s --noconfirm
     # cp @(pkgname)*.pkg.* ..
@@ -23,30 +22,33 @@ def yaourt_deps(filename):
     deps=$(makepkg -p @(filename) --printsrcinfo | grep -oP '(?<=depends = ).*')
     for d in deps.strip().split():
         if $(pacman -Ss @(f"^{d}$")).strip() == "":
-            print(f"recursively building {d}")
+            print(f"==> recursively building {d}")
             yaourt_package(d)
 
 
 def make_package(filename):
-    print(f"building {filename}")
+    print(f"==> building {filename}")
     cp @(f"{WORKSPACE}/{filename}") @(filename)
     makepkg -d -p @(filename)
     rm -rf pkg src
     yaourt_deps(filename)
     rm @(filename)
 
-make_package("basic")
-make_package("desktop-small")
+yaourt -S --noconfirm fkill
+
+print("==> Start making packages")
+# make_package("basic")
+# make_package("desktop-small")
 
 ls -lah
 
 repo-add zasdfgbnmsystem.db.tar.gz *.pkg.*
 tree -H '.' -L 1 --noreport --charset utf-8 > index.html
 
-git init
-git remote add origin git@github.com:zasdfgbnm-dockers/packages.git
-git checkout --orphan gh-pages
-git add .
-git status
-git commit -m "update"
-git push --force -u origin gh-pages
+# git init
+# git remote add origin git@github.com:zasdfgbnm-dockers/packages.git
+# git checkout --orphan gh-pages
+# git add .
+# git status
+# git commit -m "update"
+# git push --force -u origin gh-pages
