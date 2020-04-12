@@ -23,6 +23,7 @@ yaourt_package() {
 
 make_package basic
 yaourt_package mkinitcpio-docker-hooks
+yaourt_package fkill
 
 repo-add zasdfgbnmsystem.db.tar.gz *.pkg.*
 
