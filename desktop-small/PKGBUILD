@@ -25,16 +25,15 @@ md5sums=('429cd7c0aba6bb70271f3dbc0a669096'
 
 package() {
 	cd ${pkgdir}
-	mkdir -p "${pkgdir}/opt/zasdfgbnmsystem/"
 	mkdir -p "${pkgdir}/etc/netdata/python.d/"
 	mkdir -p "${pkgdir}/etc/sddm.conf.d/"
-	mkdir -p "${pkgdir}/etc/libvirt/"
+	mkdir -p "${pkgdir}/opt/zasdfgbnmsystem/etc/libvirt/"
 	mkdir -p "${pkgdir}/usr/lib/netdata/python.d/python_modules/"
 
 	install -m 644 "${srcdir}/pynvml.py" "${pkgdir}/usr/lib/netdata/python.d/python_modules/"
 	install -m 644 "${srcdir}/nv.chart.py" "${pkgdir}/usr/lib/netdata/python.d/"
 	install -m 644 "${srcdir}/nv.conf" "${pkgdir}/etc/netdata/python.d/"
 
-	install -m 755 "${srcdir}/qemu.conf" "${pkgdir}/etc/libvirt"
+	install -m 755 "${srcdir}/qemu.conf" "${pkgdir}/opt/zasdfgbnmsystem/etc/libvirt/"
 	install -m 755 "${srcdir}/sddm.conf" "${pkgdir}/etc/sddm.conf.d/"
 }
