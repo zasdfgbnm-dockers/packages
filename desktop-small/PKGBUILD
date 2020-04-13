@@ -2,6 +2,7 @@ pkgname=zasdfgbnmsystem-desktop-small
 pkgver=1
 pkgrel=1
 arch=(any)
+install=$pkgname.install
 depends=(
 	# system
 	cups
