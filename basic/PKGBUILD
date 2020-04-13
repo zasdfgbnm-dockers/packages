@@ -2,6 +2,7 @@ pkgname=zasdfgbnmsystem-basic
 pkgver=1
 pkgrel=1
 arch=(any)
+install=$pkgname.install
 depends=(
 	# shell
 	zsh
