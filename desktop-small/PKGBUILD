@@ -34,6 +34,6 @@ package() {
 	install -m 644 "${srcdir}/nv.chart.py" "${pkgdir}/usr/lib/netdata/python.d/"
 	install -m 644 "${srcdir}/nv.conf" "${pkgdir}/etc/netdata/python.d/"
 
-	install -m 755 "${srcdir}/qemu.conf" "${pkgdir}/etc/sddm.conf.d/"
-	install -m 755 "${srcdir}/sddm.conf" "${pkgdir}/etc/libvirt"
+	install -m 755 "${srcdir}/qemu.conf" "${pkgdir}/etc/libvirt"
+	install -m 755 "${srcdir}/sddm.conf" "${pkgdir}/etc/sddm.conf.d/"
 }
