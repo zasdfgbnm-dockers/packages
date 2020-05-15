@@ -54,6 +54,7 @@ depends=(
 	magma
 	cuda
 	cudnn
+	intel-mkl
 
 	# artwork
 	archlinux-wallpaper
