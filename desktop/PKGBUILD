@@ -14,6 +14,7 @@ depends=(
 	alacritty
 	system-config-printer
 	aqemu
+	qtemu-git
 
 	# nvidia
 	nvidia-container-toolkit
