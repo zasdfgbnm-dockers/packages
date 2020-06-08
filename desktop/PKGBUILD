@@ -26,7 +26,6 @@ depends=(
 	lastpass
 
 	# office
-	zoom
 	lyx
 	texlive-langchinese
 	gimp
@@ -56,6 +55,7 @@ depends=(
 	magma
 	cuda
 	cudnn
+	intel-mkl
 
 	# artwork
 	archlinux-wallpaper
@@ -78,9 +78,9 @@ depends=(
 	kcm-fcitx5-git
 
 	# virtualization
-	# virtualbox
-	# virtualbox-guest-utils
-	# virtualbox-guest-iso
-	# virtualbox-host-modules-arch
-	# virtualbox-ext-vnc
+	virtualbox
+	virtualbox-guest-iso
+	virtualbox-host-modules-arch
+	virtualbox-guest-utils
+	virtualbox-ext-vnc
 )
