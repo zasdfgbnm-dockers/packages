@@ -35,6 +35,7 @@ depends=(
 	pdfarranger
 	kbibtex
 	slack-desktop
+	sagemath
 
 	#desktop
 	plasma-wayland-session
