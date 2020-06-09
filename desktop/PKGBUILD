@@ -21,7 +21,7 @@ depends=(
 	nvidia-settings
 
 	# web & network
-	chromium
+	chromium-vaapi
 	firefox
 	lastpass
 
