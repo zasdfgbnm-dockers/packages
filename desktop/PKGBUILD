@@ -22,6 +22,7 @@ depends=(
 
 	# web & network
 	chromium
+	google-chrome
 	firefox
 	lastpass
 
