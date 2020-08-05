@@ -76,7 +76,7 @@ depends=(
 	fcitx5-gtk-git
 	fcitx5-qt4-git
 	fcitx5-qt5-git
-	kcm-fcitx5-git
+	fcitx5-configtool-git
 
 	# virtualization
 	virtualbox
