@@ -19,6 +19,10 @@ depends=(
 	nvidia
 	nvidia-utils
 	nvidia-settings
+	magma
+	cuda
+	cudnn
+	nccl
 
 	# web & network
 	chromium
@@ -54,9 +58,6 @@ depends=(
 	meld
 	sqlitebrowser
 	opencv
-	magma
-	cuda
-	cudnn
 	intel-mkl
 	anaconda
 
