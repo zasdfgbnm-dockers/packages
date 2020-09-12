@@ -2,7 +2,7 @@ post_install() {
     echo ==> Setting up system zasdfgbnmsystem/basic
 
     # set up locale
-    cp /opt/zasdfgbnmsystem/etc/locale.gen /etc/locale.gen
+    cp /opt/zasdfgbnmsystem/basic/etc/locale.gen /etc/locale.gen
     locale-gen
 
     # make initramfs bootable
