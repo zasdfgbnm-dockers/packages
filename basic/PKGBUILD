@@ -94,6 +94,7 @@ depends=(
 	ninja
 	python
 	python-pip
+	python-pyaml
 	cmake
 	openmp
 	rr
