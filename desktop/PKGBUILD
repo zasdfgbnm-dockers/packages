@@ -82,6 +82,7 @@ depends=(
 	fcitx5-configtool-git
 
 	# virtualization
+	genymotion
 	virtualbox
 	virtualbox-guest-iso
 	virtualbox-host-modules-arch
