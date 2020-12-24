@@ -99,6 +99,7 @@ depends=(
 	cmake
 	openmp
 	rr
+	fmt
 )
 
 source=(basic.conf dockersh gen_boot locale.gen)
