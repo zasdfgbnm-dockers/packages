@@ -100,6 +100,7 @@ depends=(
 	openmp
 	rr
 	fmt
+	boost
 )
 
 source=(basic.conf dockersh gen_boot locale.gen)
