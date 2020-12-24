@@ -32,12 +32,15 @@ def list_packages():
     l = $(ls *.pkg.tar.zst).strip().split()
     result = set()
     for p in l:
-        i = len(p)
-        for _ in range(3):
-            i -= 1
-            while p[i] != '-':
+        try:
+            i = len(p)
+            for _ in range(3):
                 i -= 1
-        result.add(p[:i])
+                while p[i] != '-':
+                    i -= 1
+            result.add(p[:i])
+        except IndexError:
+            pass
     return result
 
 
