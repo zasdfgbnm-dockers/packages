@@ -41,6 +41,7 @@ depends=(
 	slack-desktop
 	teams
 	sagemath
+	zoom
 
 	#desktop
 	plasma-wayland-session
