@@ -58,12 +58,13 @@ def yaourt_package(pkgname, stack):
 
 
 def yaourt_deps(filename, stack):
-    deps=$(makepkg -p @(filename) --printsrcinfo | grep -oP '(?<=depends = ).*')
+    deps=$(makepkg -p @(filename) --printsrcinfo | awk '{$1=$1};1' | grep -oP '(?<=^depends = ).*')
     for d in deps.strip().split():
         blacklist = ['>=', '>', '<=', '<', '==']
         for b in blacklist:
             if b in d:
                 d = d.split(b)[0]
+        d = d.strip()
         if $(pacman -Ss @(f"^{d}$")).strip() == "" and d not in installed and d not in stack:
             print(f"==> Recursively building {d}")
             stack.add(d)
