@@ -29,7 +29,7 @@ def enter_once(directory):
 
 
 def list_packages():
-    l = $(ls *.pkg.*).strip().split()
+    l = $(ls *.pkg.tar.zst).strip().split()
     result = set()
     for p in l:
         i = len(p)
