@@ -21,6 +21,7 @@ depends=(
 	nvidia-settings
 	magma
 	cuda
+	cuda-tools
 	cudnn
 	nccl
 
