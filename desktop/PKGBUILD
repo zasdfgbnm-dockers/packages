@@ -62,6 +62,7 @@ depends=(
 	opencv
 	intel-mkl
 	anaconda
+	katex
 
 	# artwork
 	archlinux-wallpaper
