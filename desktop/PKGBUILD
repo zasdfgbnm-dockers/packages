@@ -63,6 +63,8 @@ depends=(
 	intel-mkl
 	anaconda
 	katex
+	llvm
+	valgrind
 
 	# artwork
 	archlinux-wallpaper
