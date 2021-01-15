@@ -43,6 +43,7 @@ depends=(
 	teams
 	sagemath
 	zoom
+	telegram-desktop
 
 	#desktop
 	plasma-wayland-session
