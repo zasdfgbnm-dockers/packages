@@ -2,11 +2,7 @@
 
 set -eux
 
-sudo pacman -Sy --noconfirm strace
 sudo pacman -Syu --noconfirm pacman
-sudo locale-gen
-ls -lah /var/lib/pacman/
-sudo strace pacman -Tv
 sudo pacman -Sy --noconfirm git base-devel openssh tree libffi xonsh
 
 sudo cp -r .ssh /home/user/.ssh
