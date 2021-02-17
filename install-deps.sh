@@ -2,7 +2,7 @@
 
 set -eux
 
-sudo pacman -Syu --noconfirm git base-devel openssh tree libffi xonsh
+sudo pacman -Syu --noconfirm git base-devel yaourt openssh tree libffi xonsh
 
 sudo cp -r .ssh /home/user/.ssh
 sudo chown user:user -R /home/user/.ssh
