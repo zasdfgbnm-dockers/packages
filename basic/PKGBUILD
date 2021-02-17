@@ -74,7 +74,7 @@ depends=(
 	efibootmgr
 	grub
 	grub-btrfs
-	refind-efi
+	refind
 	fkill
 	mkinitcpio-docker-hooks
 	intel-ucode
