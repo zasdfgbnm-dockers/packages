@@ -2,6 +2,7 @@
 
 set -eux
 
+sudo pacman -S strace
 sudo pacman -Syu --noconfirm pacman
 ls -lah /var/lib/pacman/
 sudo strace pacman -Tv
