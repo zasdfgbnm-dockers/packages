@@ -20,4 +20,6 @@ jobs:
         echo ${{secrets.zasdfgbnm_bot_public_key}} > .ssh/id_rsa.pub
         echo ${{secrets.zasdfgbnm_bot_private_key}} | base64 -d > .ssh/id_rsa
     - name: build
-      run: docker run -v $PWD:/w -w /w zasdfgbnm/archlinux-yaourt bash -c './install-deps.sh && ./build-packages'
+      run: |
+        docker pull zasdfgbnm/archlinux-yaourt
+        docker run -v $PWD:/w -w /w zasdfgbnm/archlinux-yaourt bash -c './install-deps.sh && ./build-packages'
