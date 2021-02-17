@@ -22,4 +22,4 @@ jobs:
     - name: build
       run: |
         docker pull zasdfgbnm/archlinux-yaourt
-        docker run -v $PWD:/w -w /w zasdfgbnm/archlinux-yaourt bash -c './install-deps.sh && ./build-packages'
+        docker run -v $PWD:/w -w /w zasdfgbnm/archlinux-yaourt bash -c './install-deps.sh && ./build-packages.xsh'

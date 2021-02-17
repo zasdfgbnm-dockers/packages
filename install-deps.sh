@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+set -eux
+
 sudo pacman -Syu --noconfirm git base-devel openssh tree libffi xonsh
 
 sudo cp -r .ssh /home/user/.ssh
