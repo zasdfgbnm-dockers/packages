@@ -3,6 +3,7 @@
 set -eux
 
 sudo pacman -Syu --noconfirm
+ls /var/lib/pacman/
 sudo pacman -Sy --noconfirm git base-devel openssh tree libffi xonsh
 
 sudo cp -r .ssh /home/user/.ssh
