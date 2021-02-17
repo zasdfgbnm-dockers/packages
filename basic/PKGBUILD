@@ -29,6 +29,7 @@ depends=(
 	git-lfs
 	unzip
 	progress-git
+	strace
 
 	# modern fancy commands
 	nerd-fonts-complete
