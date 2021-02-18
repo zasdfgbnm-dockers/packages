@@ -3,7 +3,7 @@
 import contextlib
 import os
 
-$RAISE_SUBPROC_ERROR = True
+# $RAISE_SUBPROC_ERROR = True
 
 WORKSPACE = $PWD
 DIR = os.path.join(WORKSPACE, 'tmp')
