@@ -10,7 +10,7 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v2
@@ -21,8 +21,9 @@ jobs:
         echo ${{secrets.zasdfgbnm_bot_private_key}} | base64 -d > .ssh/id_rsa
     - name: build
       run: |
+        set -eux
         docker pull zasdfgbnm/archlinux-yaourt
-        docker run -v $PWD:/w -w /w zasdfgbnm/archlinux-yaourt bash -c '
+        sudo docker run --privileged -v $PWD:/w -w /w zasdfgbnm/archlinux-yaourt bash -c '
           set -eux
           ./install-deps.sh
           ./build-packages.xsh
