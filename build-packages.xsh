@@ -71,7 +71,7 @@ def yaourt_deps(filename, stack):
             if b in d:
                 d = d.split(b)[0]
         d = d.strip()
-        if $(pacman -Ss @(f"^{d}$")).strip() == "" and d not in installed and d not in stack:
+        if $(sh -c @(f"pacman -Ss ^{d}$ || true")).strip() == "" and d not in installed and d not in stack:
             print(f"==> Recursively building {d}")
             stack.add(d)
             yaourt_package(d, stack)
@@ -81,7 +81,7 @@ def make_package(pkgname):
     print(f"==> Building {pkgname}")
     cp -r @(f"{WORKSPACE}/{pkgname}") @(pkgname)
     with enter_once(pkgname):
-        makepkg -d
+        makepkg -d -f
         rm -rf pkg src
         cp *.pkg.* @(DIR)
         yaourt_deps('PKGBUILD', set())
