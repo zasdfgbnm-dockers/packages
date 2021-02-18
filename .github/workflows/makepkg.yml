@@ -23,7 +23,7 @@ jobs:
       run: |
         set -eux
         docker pull zasdfgbnm/archlinux-yaourt
-        docker run -v $PWD:/w -w /w zasdfgbnm/archlinux-yaourt bash -c '
+        sudo docker run --privileged -v $PWD:/w -w /w zasdfgbnm/archlinux-yaourt bash -c '
           set -eux
           ./install-deps.sh
           ./build-packages.xsh
