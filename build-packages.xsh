@@ -4,7 +4,6 @@ import contextlib
 import os
 
 $RAISE_SUBPROC_ERROR = True
-$XONSH_TRACE_SUBPROC = True
 
 WORKSPACE = $PWD
 DIR = os.path.join(WORKSPACE, 'tmp')
