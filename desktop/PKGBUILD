@@ -30,6 +30,7 @@ depends=(
 	google-chrome
 	firefox
 	lastpass
+	brave-bin
 
 	# office
 	lyx
