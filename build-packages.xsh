@@ -77,10 +77,12 @@ def yaourt_deps(filename, stack):
             yaourt_package(d, stack)
 
 
-def make_package(pkgname):
+def make_top_level_package(pkgname):
     print(f"==> Building {pkgname}")
     cp -r @(f"{WORKSPACE}/{pkgname}") @(pkgname)
+    rev = $(git rev-list --count HEAD).strip()
     with enter_once(pkgname):
+        sed -i @(f's/^pkgver=.*$/pkgver={rev}/g') PKGBUILD
         makepkg -d -f
         rm -rf pkg src
         cp *.pkg.* @(DIR)
@@ -100,9 +102,9 @@ def upload():
 with enter_once(DIR):
     print(f"==> Generating packages at {DIR}")
 
-    make_package("basic")
-    make_package("desktop-small")
-    make_package("desktop")
+    make_top_level_package("basic")
+    make_top_level_package("desktop-small")
+    make_top_level_package("desktop")
 
     repo-add zasdfgbnmsystem.db.tar.gz *.pkg.*
     tree -H '.' -L 1 --noreport --charset utf-8 > index.html
