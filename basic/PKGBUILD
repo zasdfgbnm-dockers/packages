@@ -42,6 +42,7 @@ depends=(
 	hyperfine
 	lsd
 	broot
+	duf
 
 	# network related
 	dhcpcd
