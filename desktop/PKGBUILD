@@ -42,9 +42,9 @@ depends=(
 	pdfarranger
 	kbibtex
 	slack-desktop
-	teams
+# 	teams
 	sagemath
-	zoom
+# 	zoom
 	telegram-desktop
 
 	#desktop
