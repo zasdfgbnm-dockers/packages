@@ -68,6 +68,7 @@ depends=(
 	katex
 	llvm
 	valgrind
+	imhex
 
 	# artwork
 	archlinux-wallpaper
