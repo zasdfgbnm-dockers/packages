@@ -30,6 +30,7 @@ depends=(
 	unzip
 	progress-git
 	strace
+	tldr
 
 	# modern fancy commands
 	nerd-fonts-complete
