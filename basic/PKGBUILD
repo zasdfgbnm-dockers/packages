@@ -91,6 +91,7 @@ depends=(
 	# development
 	lcov
 	bazel
+	bazel-buildtools
 	clang
 	nodejs
 	npm
