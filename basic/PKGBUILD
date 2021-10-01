@@ -31,7 +31,7 @@ depends=(
 	progress-git
 	strace
 	tldr
-	delta
+	git-delta
 
 	# modern fancy commands
 	nerd-fonts-complete
