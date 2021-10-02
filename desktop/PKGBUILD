@@ -28,7 +28,7 @@ depends=(
 
 	# web & network
 	chromium
-	google-chrome
+# 	google-chrome
 	firefox
 	lastpass
 	brave-bin
@@ -59,7 +59,7 @@ depends=(
 	mencoder
 
 	# development
-	visual-studio-code-bin
+# 	visual-studio-code-bin
 	meld
 	sqlitebrowser
 	opencv
