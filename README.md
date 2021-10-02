@@ -1,1 +1,1 @@
-![makepkg](https://github.com/zasdfgbnm-dockers/packages/workflows/makepkg/badge.svg)
+moved to separate docker repository
