@@ -47,7 +47,7 @@ def list_packages():
     return result
 
 
-def yaourt_package(pkgname, stack):
+def yaourt_package(pkgname, stack=set()):
     print(f"==> Building {pkgname}")
     with yaourt_guard():
         yaourt -G @(pkgname)
@@ -63,7 +63,7 @@ def yaourt_package(pkgname, stack):
             installed.add(p)
 
 
-def yaourt_deps(filename, stack):
+def yaourt_deps(filename, stack=set()):
     deps=$(makepkg -p @(filename) --printsrcinfo | awk '{$1=$1};1' | grep -oP '(?<=^depends = ).*')
     for d in deps.strip().split():
         blacklist = ['>=', '>', '<=', '<', '==']
@@ -86,7 +86,7 @@ def make_top_level_package(pkgname):
         makepkg -d -f
         rm -rf pkg src
         cp *.pkg.* @(DIR)
-        yaourt_deps('PKGBUILD', set())
+        yaourt_deps('PKGBUILD')
 
 
 def upload():
@@ -99,6 +99,7 @@ def upload():
     git push --force -u origin gh-pages
 
 
+mkdir -p @(DIR)
 with enter_once(DIR):
     print(f"==> Generating packages at {DIR}")
 
