@@ -33,7 +33,6 @@ def enter_once(directory):
 
 
 def list_packages():
-    trace on
     l = $(ls *.pkg.tar.zst).strip().split()
     result = set()
     for p in l:
@@ -50,7 +49,6 @@ def list_packages():
 
 
 def yaourt_package(pkgname, stack=set()):
-    trace on
     print(f"==> Building {pkgname}")
     with yaourt_guard():
         yaourt -G @(pkgname)
@@ -67,7 +65,6 @@ def yaourt_package(pkgname, stack=set()):
 
 
 def yaourt_deps(filename, stack=set()):
-    trace on
     deps=$(makepkg -p @(filename) --printsrcinfo | awk '{$1=$1};1' | grep -oP '(?<=^depends = ).*')
     for d in deps.strip().split():
         blacklist = ['>=', '>', '<=', '<', '==']
@@ -82,7 +79,6 @@ def yaourt_deps(filename, stack=set()):
 
 
 def make_top_level_package(pkgname):
-    trace on
     print(f"==> Building {pkgname}")
     cp -r @(f"{WORKSPACE}/{pkgname}") @(pkgname)
     rev = $(git rev-list --count HEAD).strip()
@@ -95,7 +91,6 @@ def make_top_level_package(pkgname):
 
 
 def upload():
-    trace on
     git init
     git remote add origin git@github.com:zasdfgbnm-dockers/packages.git
     git checkout --orphan gh-pages
@@ -107,7 +102,6 @@ def upload():
 
 mkdir -p @(DIR)
 with enter_once(DIR):
-    trace on
     print(f"==> Generating packages at {DIR}")
 
     make_top_level_package("basic")
