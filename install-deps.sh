@@ -2,7 +2,7 @@
 
 set -eux
 
-sudo pacman -Sy --noconfirm git openssh tree libffi xonsh
+sudo pacman -Sy --noconfirm git openssh tree libffi xonsh python-pygments
 
 sudo cp -r .ssh /home/user/.ssh
 sudo chown user:user -R /home/user/.ssh
